@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+.btn{
+    background-color: gray;
+}
+.btn:hover{
+    background-color: rgb(63, 60, 60)
+}
+.nav_links{
+    color: white;
+}
+.nav_links:hover{
+    color: gray;
+}
+.link{
+    color:white
+}
+.link:hover{
+    color:gray
+}
+.btn2{
+background-color: yellow;
+}
