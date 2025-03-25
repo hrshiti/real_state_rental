@@ -20,6 +20,9 @@ const Login = () => {
       [name]: value,
     }));
   };
+  const handle_forgetPass = ()=>{
+    navigate("/forget")
+  }
 
   // Handle form submission
   const handleLogin = async (e) => {
@@ -119,7 +122,7 @@ try {
             <span className="text-[#FFB400] cursor-pointer hover:underline">Sign Up</span>
           </p>
           <p className="text-gray-600 mt-2">
-            <span className="text-[#FFB400] cursor-pointer hover:underline">Forgot Password?</span>
+            <span className="text-[#FFB400] cursor-pointer hover:underline" onClick={handle_forgetPass}>Forgot Password?</span>
           </p>
         </div>
       </div>

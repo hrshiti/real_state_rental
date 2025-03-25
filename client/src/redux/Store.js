@@ -4,6 +4,8 @@ import counterReducer from "./slices/counter/Counter";
 import villasReducer from "./slices/villasSlice"
 import clientReducer from "./slices/clientSlice"
 import userReducer from "./slices/userSlice"
+import authReducer from "./slices/authSlice"
+
 
 
 
@@ -14,5 +16,6 @@ export const store = configureStore({
     villas:villasReducer,
     clients: clientReducer,
     users: userReducer,
+    auth: authReducer,
   },
 });

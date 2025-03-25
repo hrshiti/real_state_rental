@@ -106,7 +106,7 @@ const forgetPassword = async(req,res)=>{
         user.resetTokenExpiration = Date.now()+ 3600000
         await user.save()
 
-const resetLink =  `http://localhost:5000/reset-password/${resetToken}`;
+const resetLink =  `http://localhost:5173/reset/${resetToken}`;
 await transporter.sendMail({
 from:"kannuuu12345",
 to: user.email,
@@ -156,7 +156,42 @@ const resetPassword = async (req, res) => {
         res.status(500).json({ msg: "Internal Server Error" });
     }
 };
+
+const getForgetPasswordRequests = async (req, res) => {
+    try {
+        const users = await User.find({ resetToken: { $exists: true } });
+
+        if (!users.length) {
+            return res.status(404).json({ msg: "No forget password requests found" });
+        }
+
+        res.status(200).json({ msg: "Forget password requests fetched successfully", users });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Internal Server Error" });
+    }
+};
+
+
+const getResetPasswordRequests = async (req, res) => {
+    try {
+        const users = await User.find({
+            resetToken: { $exists: true },
+            resetTokenExpiration: { $gt: Date.now() }
+        });
+
+        if (!users.length) {
+            return res.status(404).json({ msg: "No valid reset password requests found" });
+        }
+
+        res.status(200).json({ msg: "Reset password requests fetched successfully", users });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Internal Server Error" });
+    }
+};
+
 //user data
 
 
-module.exports = { register, login, registerdata,forgetPassword, resetPassword};
+module.exports = { register, login, registerdata,forgetPassword, resetPassword, getForgetPasswordRequests,getResetPasswordRequests};

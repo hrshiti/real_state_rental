@@ -13,9 +13,9 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <ul className="hidden md:flex gap-8 lg:gap-12 font-[Rufina] text-lg tracking-wide">
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/villas" className="text-white hover:text-gray-300 nav_links">VILLAS</Link></li>
-        <li className="hover:text-gray-200 cursor-pointer "> <Link to="/aboutus "className='text-white hover:text-gray-300 nav_links'>About Us</Link></li>
+        <li className="hover:text-gray-200 cursor-pointer "> <Link to="/aboutus"className='text-white hover:text-gray-300 nav_links'>About Us</Link></li>
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/logout"className='text-white hover:text-gray-300 nav_links'>Logout</Link></li>
-        <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/contactus" className='nav_links'>Contact Us</Link></li>
+        <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/footer" className='nav_links'>Contact Us</Link></li>
       </ul>
 
       {/* Mobile Menu Button */}
@@ -32,8 +32,8 @@ const Navbar = () => {
         <ul className="w-full flex flex-col items-center gap-8">
          
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}> <Link to="/villas">VILLAS</Link></li>
-          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}>ABOUT US</li>
-          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}>CONTACT US</li>
+          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/aboutus">About Us</Link></li>
+          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/footer">Contact us</Link></li>
         </ul>
       </div>
 

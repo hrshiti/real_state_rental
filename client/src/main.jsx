@@ -25,6 +25,9 @@ import Logout from './components/logout.jsx'
 import ClientForm from './components/ClientForm.jsx'
 import Dashboard from './dashboard/Dashboard.jsx'
 import Table from './components/Table.jsx'
+import ForgetPassword from './components/ForgetPassword.jsx'
+import ResetPassword from './components/ResetPassword.jsx'
+
 
 
 const router = createBrowserRouter([
@@ -116,6 +119,21 @@ const router = createBrowserRouter([
   {
     path: "/table",
     element: <Table />
+
+  },
+  // {
+  //   path: "/reset",
+  //   element: <ResetPassword />
+
+  // },
+  {
+    path: "/forget",
+    element: <ForgetPassword />
+
+  },
+  {
+    path: "/reset/:token",
+    element: <ResetPassword />
 
   },
 ]);
