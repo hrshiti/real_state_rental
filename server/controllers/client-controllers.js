@@ -1,8 +1,12 @@
 const client = require("../models/client-model")
+const multer = require("multer")
 
 const clientApi = async (req,res)=>{
+
+     const photoPath = req.file ? `/uploads/${req.file.filename.replace(/\\/g, "/")}` : null;
     try {
-        const {villaName,location,guest,bedroom,bathroom,checkin,checkout} = req.body
+        const {villaName,location,guest,bedroom,bathroom,checkin,checkout} = req.body 
+        const imagePath = req.file ? req.file.path : null;
         console.log("router is created for client")
         const clientData = await client.create({
             villaName,
@@ -11,7 +15,9 @@ const clientApi = async (req,res)=>{
             bedroom,
             bathroom,
             checkin,
-            checkout
+            checkout,
+           photo:photoPath,
+
         })
         console.log("Client data saved:", clientData);
         return res.status(201).json({ msg: "New data added successfully", data: clientData });
@@ -35,4 +41,16 @@ try {
     console.log(`services : ${error}`)
 }
 }
-module.exports={clientApi,clientdata}; 
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
+    },
+});
+const upload = multer({storage})
+
+  
+module.exports={clientApi,clientdata, upload}; 

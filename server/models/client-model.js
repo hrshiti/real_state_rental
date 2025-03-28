@@ -30,6 +30,11 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: true,  // Fixed typo (require → required)
     },
+    photo: {
+        type: String,
+        required: true,  // Fixed typo (require → required)
+    },
+    
 })
 
 

@@ -17,6 +17,7 @@ const TopVillas = () => {
 
         {/* Cards Section */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20 gap-10 ml-6 pt-[44px]">
+          
           <VillasCard 
             img_src="/villas1.png"
             alt_text="image"

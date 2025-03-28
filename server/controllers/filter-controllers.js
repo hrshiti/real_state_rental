@@ -19,4 +19,16 @@ const filterApi = async (req, res) => {
         
     }
 }
-module.exports = {filterApi};
+const filterGetApi = async (req, res) => {
+    try {
+        const response = await filter.find()
+        if(!response){
+            res.status(404).json({msg:"no data found"})
+            return
+        }
+        res.status(200).json({msg:response})
+    } catch (error) {
+        console.log(`filter : ${error}`)
+    }
+}
+module.exports = {filterApi, filterGetApi};

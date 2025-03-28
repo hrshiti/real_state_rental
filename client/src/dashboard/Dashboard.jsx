@@ -18,28 +18,28 @@ const Dashboard = () => {
 
                     <Navbar />
                 <div className='w-[1600px] h-20 flex flex-row gap-6 text-white mt-8 ml-6 '>
-                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black mt-1  '>
+                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black  bg-gray-900 mt-1  '>
                         <div className='pl-12 pt-6'>
                             <p>Todays Money</p>
                             <p className='mb-6'>$53,000 <span className='text-green-700 text-12'>+55%</span></p>
                         </div>
                         <FontAwesomeIcon icon={faWallet} className='text-2xl pt-4 mr-8 mb-6'/>
                     </div>
-                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black mt-1  '>
+                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black  bg-gray-900 mt-1  '>
                     <div className='pl-12 pt-6'>
                             <p>Todays Money</p>
                             <p className='mb-6'>$53,000 <span className='text-green-700 text-12'>+55%</span></p>
                         </div>
                         <FontAwesomeIcon icon={faGlobe} className='text-2xl pt-4 mr-8 mb-6'/>
                     </div>
-                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black mt-1  '>
+                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black  bg-gray-900 mt-1  '>
                     <div className='pl-12 pt-6'>
                             <p>Todays Money</p>
                             <p className='mb-6'>$53,000 <span className='text-green-700 text-12'>+55%</span></p>
                         </div>
                         <FontAwesomeIcon icon={faFile} className='text-2xl pt-4 mr-8 mb-6'/>
                     </div>
-                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black mt-1  '>
+                    <div className='flex flex-row justify-center items-center gap-18 border-2 border-black  bg-gray-900 mt-1  '>
                     <div className='pl-12 pt-6'>
                             <p>Todays Money</p>
                             <p className='mb-6'>$53,000 <span className='text-green-700 text-12'>+55%</span></p>

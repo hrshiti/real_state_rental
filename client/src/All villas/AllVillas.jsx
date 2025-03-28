@@ -1,27 +1,32 @@
-import React, { useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect,useState} from 'react';
+//import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import Footer from '../home/Footer';
 import VillasCard from '../components/VillasCard';
 import FilterBox from '../components/FilterBox';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchVillas } from '../redux/slices/villasSlice';
+//import { fetchVillas } from '../redux/slices/villasSlice';
 
 const AllVillas = () => {
-  const dispatch = useDispatch();
- 
+  //const dispatch = useDispatch();
+ const [clients,setClients] = useState([])
 
   const navigate= useNavigate()
-  const { data } = useSelector((state) => state.villas);
-  const { villas, loading, error } = useSelector((state) => state.villas);
+  //const { data } = useSelector((state) => state.villas);
+  //const { villas, loading, error } = useSelector((state) => state.villas);
 
  const clickHandle = () => {
   navigate("/villa")
   }
 
   useEffect(() => {
-    dispatch(fetchVillas());
-  }, [dispatch]);
+    fetch("http://localhost:5000/clientdata")
+    .then(res => res.json())
+    .then((data) => {
+      console.log("Fetched Data:", data); // Debugging
+      setClients(data.msg)})
+    .catch(err=>console.log(err))
+  }, );
 
   return (
     <>
@@ -42,27 +47,24 @@ const AllVillas = () => {
             </div>
 
             {/* Villas Grid */}
-           
+            
             <div className=" w-screen  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-24 mb-16">
-              {Array.isArray(data) && data.length > 0 ? (
-                data.map((item, index) => (
+       
+            {clients.map(( client , index) =>(
                   <VillasCard
                     onClick={clickHandle}
                     key={index}
-                    img_src={item.image}
-                    alt_text={item.name}
-                    span1={item.category}
+                    img_src={`http://localhost:5000${client.photo}`}
+                    alt_text={client.villaName}
+                    span1={client.checkin}
                     span2="Mountains"
-                    heading={item.name}
-                    icon_span={`${item.price} guests`}
+                    heading={client.villaName}
+                    icon_span={`45 guests`}
                     icon2_span="460m2"
-                    icon_span2="8 bedrooms"
-                    icon2_span2="4 bathrooms"
+                    icon_span2={client.bedroom}
+                    icon2_span2={client.bathroom}
                   />
-                ))
-              ) : (
-                <p>Loading villas...</p>
-              )}
+                ))}
             </div>
             
            
