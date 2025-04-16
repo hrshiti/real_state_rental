@@ -16,6 +16,7 @@ const Navbar = () => {
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/aboutus"className='text-white hover:text-gray-300 nav_links'>About Us</Link></li>
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/logout"className='text-white hover:text-gray-300 nav_links'>Logout</Link></li>
         <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/footer" className='nav_links'>Contact Us</Link></li>
+        <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/userBookedVillaForm" className='nav_links'>Book villa</Link></li>
       </ul>
 
       {/* Mobile Menu Button */}
@@ -34,6 +35,7 @@ const Navbar = () => {
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}> <Link to="/villas">VILLAS</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/aboutus">About Us</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/footer">Contact us</Link></li>
+          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/userBookedVillaForm">Book villa</Link></li>
         </ul>
       </div>
 

@@ -27,6 +27,9 @@ import Dashboard from './dashboard/Dashboard.jsx'
 import Table from './components/Table.jsx'
 import ForgetPassword from './components/ForgetPassword.jsx'
 import ResetPassword from './components/ResetPassword.jsx'
+import { DashboardOverviewProvider } from './components/context/dashboardOverview.jsx'
+import VillaBookingForm from './components/VillaBookingForm.jsx'
+import UserBookedVillaForm from './components/UserBookedVillaForm.jsx'
 
 
 
@@ -136,14 +139,26 @@ const router = createBrowserRouter([
     element: <ResetPassword />
 
   },
+  {
+    path: "/villaBookingForm",
+    element: <VillaBookingForm />
+
+  },
+  {
+    path: "/userBookedVillaForm",
+    element: <UserBookedVillaForm />
+
+  },
 ]);
 createRoot(document.getElementById('root')).render(
   <AuthProvider>
-
+<DashboardOverviewProvider>
+  
     <StrictMode>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
     </StrictMode>
+</DashboardOverviewProvider>
   </AuthProvider>
 );

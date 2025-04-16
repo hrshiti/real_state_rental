@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaLock, FaPhone } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./context/auth";
 
 const Signup = () => {
@@ -65,7 +65,7 @@ const Signup = () => {
 
 
   return (
-    <div className="w-screen flex justify-center items-center min-h-screen bg-[#F8EFE2]">
+    <div className="w-screen flex justify-center items-center min-h-screen text-black bg-[#F8EFE2]">
       <div className="w-[90%] sm:w-[400px] p-8 bg-white shadow-2xl rounded-2xl text-center">
         <h2 className="text-3xl font-bold text-[#181d24]">Sign Up</h2>
         <p className="text-gray-600 mt-2">Create an account to get started.</p>
@@ -151,7 +151,7 @@ const Signup = () => {
           <p className="text-gray-600">
             Already have an account?{" "}
             <span className="text-[#FFB400] cursor-pointer hover:underline" >
-              Login
+             <Link to="/login"> Login </Link>
             </span>
           </p>
         </div>

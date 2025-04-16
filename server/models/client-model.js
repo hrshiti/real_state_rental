@@ -10,29 +10,42 @@ const clientSchema = new mongoose.Schema({
         type: String,
         required: true,  // Fixed typo (require → required)
     },
-    guest: {
+    description: {
         type: String,
         required: true,  // Fixed typo (require → required)
     },
-    bedroom: {
+    numberOfRooms: {
         type: String,
         required: true,  // Fixed typo (require → required)
     },
-    bathroom: {
+    pricePerNight: {
         type: String,
         required: true,  // Fixed typo (require → required)
     },
-    checkin: {
+    
+    amenities: {
+        type: [String],
+        required: false,  // Fixed typo (require → required)
+    },
+    checkInTime: {
         type: String,
         required: true,  // Fixed typo (require → required)
     },
-    checkout: {
+    availableTo: {
+        type: String,
+        required: true,  // Fixed typo (require → required)
+    },
+    checkOutTime: {
+        type: String,
+        required: true,  // Fixed typo (require → required)
+    },
+    status: {
         type: String,
         required: true,  // Fixed typo (require → required)
     },
     photo: {
         type: String,
-        required: true,  // Fixed typo (require → required)
+        required: false,  // Fixed typo (require → required)
     },
     
 })

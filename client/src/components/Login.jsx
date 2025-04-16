@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./context/auth";
 
 const Login = () => {
@@ -66,7 +66,7 @@ try {
   };
 
   return (
-    <div className="w-screen flex justify-center items-center min-h-screen bg-[#F8EFE2]">
+    <div className="w-screen flex justify-center items-center min-h-screen text-black bg-[#F8EFE2]">
       <div className="w-[90%] sm:w-[400px] p-8 bg-white shadow-2xl rounded-2xl text-center">
         <h2 className="text-3xl font-bold text-[#181d24]">Login</h2>
         <p className="text-gray-600 mt-2">Welcome back! Please login to continue.</p>
@@ -119,7 +119,7 @@ try {
         <div className="mt-4">
           <p className="text-gray-600">
             Don't have an account?{" "}
-            <span className="text-[#FFB400] cursor-pointer hover:underline">Sign Up</span>
+            <Link to="/signup"><span className="text-[#FFB400] cursor-pointer hover:underline">Sign Up</span></Link>
           </p>
           <p className="text-gray-600 mt-2">
             <span className="text-[#FFB400] cursor-pointer hover:underline" onClick={handle_forgetPass}>Forgot Password?</span>

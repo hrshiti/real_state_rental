@@ -4,6 +4,9 @@ const {register,login, registerdata, resetPassword, forgetPassword,getForgetPass
 
 const {clientApi,clientdata, upload} = require("../controllers/client-controllers")
 const { filterApi, filterGetApi } = require("../controllers/filter-controllers")
+const {dashboardOverviewApi,dashboardOverviewGetApi,villaManagementApi,villaManagementGetApi, bookingManagementApi,userManagementApi,financialReportApi,financialReportGetApi, bookingManagementGetApi, userManagementGetApi} = require("../controllers/dashboard-controllers")
+const { userBookedVillaApi } = require("../controllers/userBookedVilla-controller")
+
 
 
 
@@ -21,4 +24,24 @@ router.get("/forget-password-requests", getForgetPasswordRequests);
 router.get("/reset-password-requests", getResetPasswordRequests);
 router.post("/filterdata" , filterApi)
 router.get("/filterGetdata" , filterGetApi)
+
+
+//dashboard routes dfining
+router.post("/dashboardOverviewApi",dashboardOverviewApi)
+router.get("/dashboardOverviewGetApi",dashboardOverviewGetApi)
+router.post("/villaManagementApi",villaManagementApi)
+router.get("/villaManagementGetApi",villaManagementGetApi)
+router.post("/bookingManagementApi",bookingManagementApi)
+router.get("/bookingManagementGetApi",bookingManagementGetApi)
+router.get("/userManagementGetApi",userManagementGetApi)
+router.post("/userManagementApi",userManagementApi)
+router.get("/financialReportGetApi",financialReportGetApi)
+router.post("/financialReportApi",financialReportApi)
+
+//villa booking routing
+router.post("/userBookedVilla", userBookedVillaApi)
+
+
+
+
 module.exports = router
