@@ -21,7 +21,7 @@ const userBookedVillaSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    guests:{
+    guestsNumb:{
         type:Number,
         required:true
     },
@@ -33,7 +33,7 @@ const userBookedVillaSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-})
+},{ timestamps: true }); 
 
  const UserBookedVillaSchema = mongoose.model("UserBookedVilla", userBookedVillaSchema)
 module.exports = UserBookedVillaSchema

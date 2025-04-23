@@ -16,9 +16,9 @@ const clientApi = async (req, res) => {
       numberOfRooms,
     } = req.body;
 
-    const photoPath = req.file
-      ? `/uploads/${req.file.filename.replace(/\\/g, "/")}`
-      : null;
+    const photoPaths = req.files.map(file =>
+      `/uploads/${file.filename.replace(/\\/g, "/")}`
+    );
 
     const clientData = await client.create({
       villaName,
@@ -31,7 +31,7 @@ const clientApi = async (req, res) => {
       numberOfRooms,
       checkOutTime,
       status,
-      photo: photoPath,
+      photo: photoPaths,
     });
 
     console.log("Client data saved:", clientData);
@@ -56,6 +56,35 @@ const clientdata = async (req, res) => {
     res.status(500).json({ msg: "Server Error" });
   }
 };
+const clientDataDeleteApi = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await client.findByIdAndDelete(id);
+    if (!response) {
+      return res.status(404).json({ msg: "No data found" });
+    }
+    res.status(200).json({ msg: "Deleted successfully" });
+  } catch (error) {
+    console.log(`Service error: ${error}`);
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
+const clientDataUpdateApi = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await client.findByIdAndUpdate(id, req.body, {
+      new: true,
+    }); // Return the updated document
+    if (!response) {
+      return res.status(404).json({ msg: "No data found" });
+    }   
+    res.status(200).json({ msg: "Updated successfully", data: response });
+  }
+  catch (error) {
+    console.log(`Service error: ${error}`);
+    res.status(500).json({ msg: "Server Error" });
+  }
+}
 
 // Multer config
 const storage = multer.diskStorage({
@@ -68,4 +97,4 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-module.exports = { clientApi, clientdata, upload };
+module.exports = { clientApi, clientdata, upload, clientDataDeleteApi, clientDataUpdateApi };

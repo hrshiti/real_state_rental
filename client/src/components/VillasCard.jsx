@@ -4,7 +4,9 @@ import { faPerson, faBed, faToilet, faRecycle } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_span2, icon2_span, icon2_span2, onClick }) => {
+const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_span2, icon2_span, icon2_span2, onClick, onUpdate,
+  onDelete,
+  showActions = false, }) => {
 
  
 
@@ -21,7 +23,7 @@ const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_
             alt={alt_text} 
             className="w-screen h-[300px] object-cover rounded-br-[50px]" 
           />
-        
+         
       </div>
 
       {/* Text Content */}
@@ -42,7 +44,7 @@ const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faPerson} /> {icon_span}
             </span>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center  mr-12 gap-2">
               <FontAwesomeIcon icon={faBed} /> {icon_span2}
             </span>
           </div>
@@ -52,7 +54,7 @@ const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faRecycle} /> {icon2_span}
             </span>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center mr-12 gap-2">
               <FontAwesomeIcon icon={faToilet} /> {icon2_span2}
             </span>
           </div>
@@ -60,7 +62,12 @@ const VillasCard = ({ img_src, alt_text, span1, span2, heading, icon_span, icon_
         </div>
 
       </div>
-      
+      {showActions && (
+          <div className="flex justify-between mt-4">
+            <button onClick={onUpdate} className="  text-black px-4 py-1 rounded hover:bg-yellow-500 transition ">Update</button>
+            <button onClick={onDelete} className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">Delete</button>
+          </div>
+        )}
     </div>
   )
 }

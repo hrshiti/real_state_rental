@@ -30,7 +30,7 @@ const[data,setData]=useState({
   }
   return (
     <>
-   <div className=" w-screen flex items-center justify-center min-h-screen bg-gray-100">
+   <div className=" w-screen flex items-center justify-center text-black min-h-screen bg-gray-100">
       <div className="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Villa Booking Form</h2>
         <form onClick={handleSubmit}>

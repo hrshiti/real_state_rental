@@ -8,7 +8,7 @@ const AboutPage = () => {
       <div className="w-full max-w-[1366px] flex flex-col md:flex-row justify-center items-center md:ml-12">
         
         {/* Left Section */}
-        <div className="w-full md:w-[696px] h-auto md:h-[699px] text-center md:text-left">
+        <div className="w-full md:w-[696px] h-auto md:h-[699px] text-black text-center md:text-left">
           <h1 className="text-3xl md:text-4xl font-bold">About Us</h1>
           <p className="w-full md:w-[513px] h-auto md:h-[444px] pt-6 md:pt-12 text-base md:text-lg">
             Curabitur efficitur ante vel mi bibendum, et maximus nisl ultricies. Morbi nec tempus dui, sit amet facilisis nisl.

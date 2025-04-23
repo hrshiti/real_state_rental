@@ -23,6 +23,7 @@ import Todo from './redux/Todo.jsx'
 import { AuthProvider } from './components/context/auth.jsx'
 import Logout from './components/logout.jsx'
 import ClientForm from './components/ClientForm.jsx'
+import BookingTable from './components/BookingTable.jsx'
 import Dashboard from './dashboard/Dashboard.jsx'
 import Table from './components/Table.jsx'
 import ForgetPassword from './components/ForgetPassword.jsx'
@@ -30,6 +31,8 @@ import ResetPassword from './components/ResetPassword.jsx'
 import { DashboardOverviewProvider } from './components/context/dashboardOverview.jsx'
 import VillaBookingForm from './components/VillaBookingForm.jsx'
 import UserBookedVillaForm from './components/UserBookedVillaForm.jsx'
+import { VillaBookedProvider } from './components/context/villaBooked.jsx'
+import VillaManagementPage from './dashboard/VillaManagementPage.jsx'
 
 
 
@@ -42,6 +45,11 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomePage />,
+
+  },
+  {
+    path: "/bookingtable",
+    element: <BookingTable />,
 
   },
   {
@@ -140,7 +148,12 @@ const router = createBrowserRouter([
 
   },
   {
-    path: "/villaBookingForm",
+    path: "/villaBookingForm/:id",
+    element: <VillaBookingForm />
+
+  },
+  {
+    path: "/villaBookedForm",
     element: <VillaBookingForm />
 
   },
@@ -149,16 +162,23 @@ const router = createBrowserRouter([
     element: <UserBookedVillaForm />
 
   },
+  {
+    path: "/villamanagementpage",
+    element: <VillaManagementPage />
+
+  },
 ]);
 createRoot(document.getElementById('root')).render(
   <AuthProvider>
+
 <DashboardOverviewProvider>
-  
+  <VillaBookedProvider>
     <StrictMode>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
     </StrictMode>
+    </VillaBookedProvider>
 </DashboardOverviewProvider>
   </AuthProvider>
 );

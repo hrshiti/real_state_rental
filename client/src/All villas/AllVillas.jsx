@@ -48,7 +48,7 @@ const AllVillas = () => {
 
             {/* Villas Grid */}
             
-            <div className=" w-screen  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-24 mb-16">
+            <div className=" w-6xl ml-34  grid grid-cols-1 sm:grid-cols-2 text-black lg:grid-cols-3 gap-6 mt-24 mb-16">
        
             {clients.map(( client , index) =>(
                   <VillasCard

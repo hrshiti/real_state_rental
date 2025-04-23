@@ -5,16 +5,28 @@ import { faCartArrowDown, faFile, faGlobe, faWallet } from "@fortawesome/free-so
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GraphsPage from './GraphsPage';
 import { useDashboardOverview } from '../components/context/dashboardOverview';
+import { useVillaBooked } from '../components/context/villaBooked';
+
 
 const Dashboard = () => {
 const {dashboardOverview} = useDashboardOverview()
+const {villaBooked} = useVillaBooked()
+
+// Log the villa booked data when it changes
+useEffect(() => {
+    if (villaBooked) {
+        console.log("Villa Booked Data:", villaBooked);
+    }
+}, [villaBooked]);
+  // Log the dashboard overview data when it changes
+
 useEffect(() => {
     if (dashboardOverview) {
       console.log("Dashboard Overview Data:", dashboardOverview);
     }
   }, [dashboardOverview]);
     return (
-        <div className='w-screen h-auto bg-gradient-to-br from-black via-blue-900 to-black  text-white'>
+        <div className='w-screen h-auto bg-gradient-to-br from-black via-blue-900 to-black overflow-hidden  text-white'>
             <div className='flex flex-row '>
 
                 <div className='mt-12'>

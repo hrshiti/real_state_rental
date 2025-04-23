@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export default function VillaBookingForm() {
+  const { id } = useParams(); // will be undefined if you're adding a villa
+const navigate = useNavigate();
   const [formData, setFormData] = useState({
     villaName: "",
     location: "",
@@ -15,14 +18,37 @@ export default function VillaBookingForm() {
     photo: [],
     status: "Available",
   });
+useEffect(() => {
+  if (id) {
+    fetch(`http://localhost:5000/client/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFormData({
+          villaName: data.villaName,
+          location: data.location,
+          description: data.description,
+          pricePerNight: data.pricePerNight,
+          numberOfRooms: data.numberOfRooms,
+          availableFrom: data.availableFrom?.slice(0, 10),
+          availableTo: data.availableTo?.slice(0, 10),
+          checkInTime: data.checkInTime,
+          checkOutTime: data.checkOutTime,
+          amenities: data.amenities || [],
+          photo: [], // we don't pre-fill file input
+          status: data.status,
+        });
+      });
+  }
+}, [id]);
 
   const handleChange = (e) => {
     const { name, value, type, files, checked } = e.target;
 
+   
     if (type === "file") {
-      setFormData({ ...formData, [name]: files[0] }); // store a single File object
+      setFormData({ ...formData, [name]: Array.from(files) }); // ✅ store array of files
     }
-     else if (type === "checkbox") {
+    else if (type === "checkbox") {
       const newAmenities = checked
         ? [...formData.amenities, value]
         : formData.amenities.filter((item) => item !== value);
@@ -35,48 +61,48 @@ export default function VillaBookingForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-   
-    
-      const data = new FormData();
-    
-      data.append("villaName", formData.villaName);
-      data.append("location", formData.location);
-      data.append("description", formData.description);
-      data.append("pricePerNight", formData.pricePerNight);
-      data.append("numberOfRooms", formData.numberOfRooms);
-      data.append("availableFrom", formData.availableFrom);
-      data.append("availableTo", formData.availableTo);
-      data.append("checkInTime", formData.checkInTime);
-      data.append("checkOutTime", formData.checkOutTime);
-      data.append("status", formData.status);
-    
-      formData.amenities.forEach((amenity, index) => {
-        data.append(`amenities[]`, amenity);
+
+
+    const data = new FormData();
+
+    data.append("villaName", formData.villaName);
+    data.append("location", formData.location);
+    data.append("description", formData.description);
+    data.append("pricePerNight", formData.pricePerNight);
+    data.append("numberOfRooms", formData.numberOfRooms);
+    data.append("availableFrom", formData.availableFrom);
+    data.append("availableTo", formData.availableTo);
+    data.append("checkInTime", formData.checkInTime);
+    data.append("checkOutTime", formData.checkOutTime);
+    data.append("status", formData.status);
+
+    formData.amenities.forEach((amenity, index) => {
+      data.append(`amenities[]`, amenity);
+    });
+
+    if (formData.photo.length > 0) {
+      formData.photo.forEach((file) => {
+        data.append("photo", file); // Note: Use same field name multiple times
       });
-    
-      if (formData.images) {
-        data.append("photo", formData.photo); // name it 'image' (singular)
+    }    
+    try {
+     const res = await fetch(`http://localhost:5000/client${id ? `/${id}` : ""}`, {
+  method: id ? "PATCH" : "POST",
+  body: data,
+});
+      if (res.ok) {
+        console.log(id ? "Villa updated successfully!" : "Villa added successfully!");
+        navigate("/dashboard/villas");
+      } else {
+        console.error("Error submitting form");
       }
-    
-      try {
-        const res = await fetch("http://localhost:5000/client", {
-          method: "POST",
-          body: data,
-          // Don't set Content-Type manually
-        });
-    
-        if (res.ok) {
-          console.log("Villa added successfully!");
-        } else {
-          console.error("Error submitting form");
-        }
-      } catch (err) {
-        console.error("Network error:", err);
-      }
-    };
-    
-    // Post data to backend here
- 
+    } catch (err) {
+      console.error("Network error:", err);
+    }
+  };
+
+  // Post data to backend here
+
 
   const amenityOptions = ["WiFi", "Pool", "AC", "TV", "Parking", "Garden"];
 
@@ -190,15 +216,14 @@ export default function VillaBookingForm() {
         <div>
           <label className="block font-semibold mb-2">Villa Images:</label>
           <input
-          
             type="file"
             name="photo"
-            // multiple
+            multiple // ✅ Allow selecting multiple files
             accept="image/*"
             onChange={handleChange}
             className="w-60 bg-white"
-           
           />
+
         </div>
 
         <button

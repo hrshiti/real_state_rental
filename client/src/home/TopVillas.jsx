@@ -3,7 +3,7 @@ import VillasCard from '../components/VillasCard';
 
 const TopVillas = () => {
   return (
-    <div className="w-screen h-full bg-[#F8EFE2] flex flex-col justify-center items-center   ">
+    <div className="w-screen h-full bg-[#F8EFE2] flex flex-col justify-center text-black items-center   ">
       <div className="flex flex-col gap-12 w-full max-w-[1536px] text-center">
         {/* Heading Section */}
         <div className="w-full max-w-[1257px] mx-auto mt-16">

@@ -14,7 +14,7 @@ if (loading) return <p>Loading users...</p>;
 if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className="overflow-x-auto mt-8 p-4">
+        <div className="overflow-x-auto mt-8 p-4 w-screen">
           <h2 className="text-2xl font-semibold mb-4 text-center">User Information</h2>
           
           <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
@@ -31,7 +31,7 @@ if (error) return <p>Error: {error}</p>;
             </thead>
     
             {/* Table Body */}
-            <tbody>
+            <tbody className='text-black'>
             {users.map((user)=>(
                 <tr key={user._id}
                  className="border-b border-gray-200 hover:bg-gray-100 transition duration-300"

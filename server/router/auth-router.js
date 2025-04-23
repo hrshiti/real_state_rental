@@ -2,10 +2,10 @@ const express = require("express")
 const router = express.Router()
 const {register,login, registerdata, resetPassword, forgetPassword,getForgetPasswordRequests,getResetPasswordRequests} = require("../controllers/auth-controllers")
 
-const {clientApi,clientdata, upload} = require("../controllers/client-controllers")
+const {clientApi,clientdata, upload, clientDataDeleteApi, clientDataUpdateApi} = require("../controllers/client-controllers")
 const { filterApi, filterGetApi } = require("../controllers/filter-controllers")
 const {dashboardOverviewApi,dashboardOverviewGetApi,villaManagementApi,villaManagementGetApi, bookingManagementApi,userManagementApi,financialReportApi,financialReportGetApi, bookingManagementGetApi, userManagementGetApi} = require("../controllers/dashboard-controllers")
-const { userBookedVillaApi } = require("../controllers/userBookedVilla-controller")
+const { userBookedVillaApi,userBookedVillaGetApi,getBookingsPerMonth } = require("../controllers/userBookedVilla-controller")
 
 
 
@@ -13,8 +13,10 @@ const { userBookedVillaApi } = require("../controllers/userBookedVilla-controlle
 router.post("/register",register)
 router.get("/registerdata",registerdata)
 router.post("/login",login)
-router.post("/client", upload.single('photo'),clientApi)
+router.post("/client", upload.array("photo", 10), clientApi);
 router.get("/clientdata",clientdata)
+router.delete("/clientDataDeleteApi/:id",clientDataDeleteApi)
+router.patch("/clientDataUpdateApi/:id",clientDataUpdateApi)
 router.post("/forget-password",forgetPassword)
 
 router.post("/reset-password/:token",resetPassword)
@@ -39,7 +41,9 @@ router.get("/financialReportGetApi",financialReportGetApi)
 router.post("/financialReportApi",financialReportApi)
 
 //villa booking routing
-router.post("/userBookedVilla", userBookedVillaApi)
+router.post("/userBookedVillaApi", userBookedVillaApi)
+router.get("/getBookingsPerMonth", getBookingsPerMonth)
+router.get("/userBookedVillaGetApi", userBookedVillaGetApi)
 
 
 

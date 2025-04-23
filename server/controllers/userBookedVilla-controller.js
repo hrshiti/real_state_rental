@@ -9,7 +9,8 @@ const userBookedVillaApi = async (req, res) => {
         checkIn,
         checkOut,
         guests,
-        villaType
+        villaType,
+        guestsNumb
     } = req.body;
     try {
         const userBookedVillaData = await userBookedVilla.create({
@@ -19,7 +20,8 @@ const userBookedVillaApi = async (req, res) => {
             checkIn,
             checkOut,
             guests,
-            villaType
+            villaType,
+            guestsNumb
         });
         await userBookedVillaData.save();
         console.log("User booked villa data saved:", userBookedVillaData);
@@ -55,9 +57,28 @@ const userBookedVillaDeleteApi = async (req, res) => {
         console.log(`userBookedVilla : ${error}`)
     }
 }
+const getBookingsPerMonth = async (req, res) => {
+    try {
+      const result = await userBookedVilla.aggregate([
+        {
+          $group: {
+            _id: { month: { $month: "$createdAt" }, year: { $year: "$createdAt" } },
+            count: { $sum: 1 }
+          }
+        },
+        { $sort: { "_id.year": 1, "_id.month": 1 } }
+      ]);
+  
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ msg: "Internal server error" });
+    }
+  };
+  
 const userBookedVillaUpdateApi = async (req, res) => {
     const { id } = req.params;
-    const { name, email, phone, checkIn, checkOut, guests, villaType } = req.body;
+    const { name, email, phone, checkIn, checkOut, guests, villaType,guestsNumb } = req.body;
     try {
         const response = await userBookedVilla.findByIdAndUpdate(id, {
             name,
@@ -66,7 +87,8 @@ const userBookedVillaUpdateApi = async (req, res) => {
             checkIn,
             checkOut,
             guests,
-            villaType
+            villaType,
+            guestsNumb
         }, { new: true })
         if (!response) {
             res.status(404).json({ msg: "No data found" })
@@ -77,4 +99,4 @@ const userBookedVillaUpdateApi = async (req, res) => {
         console.log(`userBookedVilla : ${error}`)
     }
 }
-module.exports = { userBookedVillaApi, userBookedVillaGetApi, userBookedVillaDeleteApi, userBookedVillaUpdateApi };
+module.exports = { userBookedVillaApi, userBookedVillaGetApi, userBookedVillaDeleteApi, userBookedVillaUpdateApi,getBookingsPerMonth };

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PropSpecialities = () => {
   return (
-    <div className="w-screen h-screen bg-[#F8EFE2] flex flex-col items-center justify-center py-12 px-4">
+    <div className="w-screen h-screen bg-[#F8EFE2] text-black flex flex-col items-center justify-center py-12 px-4">
       
       {/* Heading Section */}
       <div className="text-center max-w-[857px]">
