@@ -1,6 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
- const BASE_URL = "http://localhost:5000/registerdata"
+ const BASE_URL = "https://real-state-backend-uvau.onrender.com/registerdata"
 
  export const fetchUsers = createAsyncThunk("users/fetchUsers", async()=>{
 const response = await axios.get(`${BASE_URL}`)

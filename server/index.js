@@ -22,7 +22,7 @@ app.use("/", router)
 app.use("/uploads", express.static("uploads"));
 
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 connectDB().then(()=>{
 
     app.listen(PORT,()=>{

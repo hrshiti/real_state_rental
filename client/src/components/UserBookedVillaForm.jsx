@@ -24,7 +24,7 @@ const UserBookedVillaForm = () => {
     // You can integrate backend API here later
   
 try {
-      const response = await fetch('http://localhost:5000/userBookedVilla', {
+      const response = await fetch('https://real-state-backend-uvau.onrender.com/userBookedVilla', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

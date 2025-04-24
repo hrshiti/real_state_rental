@@ -20,7 +20,7 @@ const navigate = useNavigate();
   });
 useEffect(() => {
   if (id) {
-    fetch(`http://localhost:5000/client/${id}`)
+    fetch(`https://real-state-backend-uvau.onrender.com/client/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFormData({
@@ -86,7 +86,7 @@ useEffect(() => {
       });
     }    
     try {
-     const res = await fetch(`http://localhost:5000/client${id ? `/${id}` : ""}`, {
+     const res = await fetch(`https://real-state-backend-uvau.onrender.com/client${id ? `/${id}` : ""}`, {
   method: id ? "PATCH" : "POST",
   body: data,
 });

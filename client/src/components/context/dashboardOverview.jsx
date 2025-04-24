@@ -7,7 +7,7 @@ export const DashboardOverviewProvider = ({children})=>{
 
     const fetchDashboardOverview = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/dashboardOverviewGetApi'); // Adjust the endpoint as needed
+            const response = await axios.get('https://real-state-backend-uvau.onrender.com/dashboardOverviewGetApi'); // Adjust the endpoint as needed
             if (response.status === 200) {
                 setDashboardOverview(response.data.msg); // Assuming the response data is in the format you need
             } else {

@@ -9,7 +9,7 @@ const [villaBooked, setVillaBooked] = useState({})
 
 const fetchVillaBooked = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/userBookedVillaGetApi'); // Adjust the endpoint as needed
+        const response = await axios.get('https://real-state-backend-uvau.onrender.com/userBookedVillaGetApi'); // Adjust the endpoint as needed
         if (response.status === 200){
             setVillaBooked(response.data.msg); // Assuming the response data is in the format you need
 

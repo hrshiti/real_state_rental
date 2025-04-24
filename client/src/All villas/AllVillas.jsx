@@ -20,7 +20,7 @@ const AllVillas = () => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/clientdata")
+    fetch("https://real-state-backend-uvau.onrender.com/clientdata")
     .then(res => res.json())
     .then((data) => {
       console.log("Fetched Data:", data); // Debugging
@@ -54,7 +54,7 @@ const AllVillas = () => {
                   <VillasCard
                     onClick={clickHandle}
                     key={index}
-                    img_src={`http://localhost:5000${client.photo}`}
+                    img_src={`https://real-state-backend-uvau.onrender.com${client.photo}`}
                     alt_text={client.villaName}
                     span1={client.checkin}
                     span2="Mountains"

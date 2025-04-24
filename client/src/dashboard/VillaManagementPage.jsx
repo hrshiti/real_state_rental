@@ -10,7 +10,7 @@ const VillaManagementPage = () => {
   };
   // Fetch client data on mount
   useEffect(() => {
-    fetch("http://localhost:5000/clientdata")
+    fetch("https://real-state-backend-uvau.onrender.com/clientdata")
       .then(res => res.json())
       .then((data) => {
         console.log("Fetched Data:", data);
@@ -25,7 +25,7 @@ const VillaManagementPage = () => {
       const confirmDelete = window.confirm(`Are you sure you want to delete ${villa.villaName}?`);
       if (!confirmDelete) return;
 
-      const response = await fetch(`http://localhost:5000/clientDataDeleteApi/${villa._id}`, {
+      const response = await fetch(`https://real-state-backend-uvau.onrender.com/clientDataDeleteApi/${villa._id}`, {
         method: 'DELETE',
       });
 
@@ -57,7 +57,7 @@ const VillaManagementPage = () => {
           <VillasCard
             key={index}
             onClick={() => console.log("Villa clicked:", client)}
-            img_src={`http://localhost:5000${client.photo}`}
+            img_src={`https://real-state-backend-uvau.onrender.com${client.photo}`}
             alt_text={client.villaName}
             span1={client.checkin}
             span2="Mountains"

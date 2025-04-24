@@ -38,7 +38,7 @@ const Signup = () => {
     console.log("Signing up:", user);
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('https://real-state-backend-uvau.onrender.com/register', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

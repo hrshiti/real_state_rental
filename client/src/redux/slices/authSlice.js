@@ -5,7 +5,7 @@ export const forgetPassword = createAsyncThunk(
   "auth/forgetPassword",
   async (email, { rejectWithValue }) => {
     try {
-      const response = await fetch("http://localhost:5000/forget-password", {
+      const response = await fetch("https://real-state-backend-uvau.onrender.com/forget-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

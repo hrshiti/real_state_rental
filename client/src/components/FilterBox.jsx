@@ -16,7 +16,7 @@ const [selectedPrize, setSelectedPrize] = useState("Select Prize");
 useEffect(() => {
 const fetchFilterData = async ()=>{
   try {
-    const response = await fetch("http://localhost:5000/filterGetdata")
+    const response = await fetch("https://real-state-backend-uvau.onrender.com/filterGetdata")
     const data = await response.json()
     console.log("API Response:", data);
     if(response.ok){
