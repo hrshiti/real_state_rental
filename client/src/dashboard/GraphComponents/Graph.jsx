@@ -1,5 +1,13 @@
 import React from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const data = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -13,21 +21,24 @@ const data = [
 
 const Graph = () => {
   return (
-    <div className="w-full h-96 bg-gradient-to-br from-black via-blue-900 to-black text-white p-6 rounded-lg">
-      <h3 className="text-xl font-bold">Sales Overview</h3>
-      <p className="text-sm text-green-500">(+5) more in 2021</p>
-      <ResponsiveContainer width="100%" height={300}>
-        <AreaChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-        </AreaChart>
-      </ResponsiveContainer>
+    <div className="w-full max-w-full h-[24rem] md:h-[28rem] xl:h-[32rem] bg-gradient-to-br from-black via-blue-900 to-black text-white p-4 sm:p-6 rounded-xl shadow-lg">
+      <h3 className="text-lg sm:text-xl font-bold mb-1">Sales Overview</h3>
+      <p className="text-sm text-green-500 mb-4">(+5) more in 2021</p>
+      
+      <div className="w-full h-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            data={data}
+            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

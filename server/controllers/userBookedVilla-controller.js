@@ -1,4 +1,4 @@
-const userBookedVilla = require('../models/userBookedVilla-model');
+const UserBookedVilla = require('../models/userBookedVilla-model');
 
 
 const userBookedVillaApi = async (req, res) => {
@@ -13,7 +13,7 @@ const userBookedVillaApi = async (req, res) => {
         guestsNumb
     } = req.body;
     try {
-        const userBookedVillaData = await userBookedVilla.create({
+        const userBookedVillaData = await UserBookedVilla.create({
             name,
             email,
             phone,
@@ -34,7 +34,7 @@ const userBookedVillaApi = async (req, res) => {
 
 const userBookedVillaGetApi = async (req, res) => {
     try {
-        const response = await userBookedVilla.find()
+        const response = await UserBookedVilla.find()
         if (!response) {
             res.status(404).json({ msg: "No data found" })
             return
@@ -47,7 +47,7 @@ const userBookedVillaGetApi = async (req, res) => {
 const userBookedVillaDeleteApi = async (req, res) => {
     const { id } = req.params;
     try {
-        const response = await userBookedVilla.findByIdAndDelete(id)
+        const response = await UserBookedVilla.findByIdAndDelete(id)
         if (!response) {
             res.status(404).json({ msg: "No data found" })
             return
@@ -59,7 +59,7 @@ const userBookedVillaDeleteApi = async (req, res) => {
 }
 const getBookingsPerMonth = async (req, res) => {
     try {
-      const result = await userBookedVilla.aggregate([
+      const result = await UserBookedVilla.aggregate([
         {
           $group: {
             _id: { month: { $month: "$createdAt" }, year: { $year: "$createdAt" } },
@@ -80,7 +80,7 @@ const userBookedVillaUpdateApi = async (req, res) => {
     const { id } = req.params;
     const { name, email, phone, checkIn, checkOut, guests, villaType,guestsNumb } = req.body;
     try {
-        const response = await userBookedVilla.findByIdAndUpdate(id, {
+        const response = await UserBookedVilla.findByIdAndUpdate(id, {
             name,
             email,
             phone,

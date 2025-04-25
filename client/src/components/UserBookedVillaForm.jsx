@@ -10,7 +10,7 @@ const UserBookedVillaForm = () => {
     checkOut: '',
     guests: 1,
     villaType: '',
-    requests: '',
+    guestsNumb: '',
   });
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const UserBookedVillaForm = () => {
     // You can integrate backend API here later
   
 try {
-      const response = await fetch('https://real-state-backend-uvau.onrender.com/userBookedVilla', {
+      const response = await fetch('https://real-state-backend-uvau.onrender.com/userBookedVillaApi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ try {
           checkOut: '',
           guests: 1,
           villaType: '',
-          requests: '',
+          guestsNumb: '',
         });
       } else {
         alert('Booking failed. Please try again.');
@@ -99,8 +99,8 @@ try {
           <option value="Budget">Budget</option>
         </select>
 
-        <textarea name="requests" placeholder="Special Requests (optional)"
-          value={formData.requests} onChange={handleChange}
+        <textarea name="guestsNumb" placeholder="Special Requests (optional)"
+          value={formData.guestsNumb} onChange={handleChange}
           className="w-full border p-3 rounded-xl h-24"
         ></textarea>
 

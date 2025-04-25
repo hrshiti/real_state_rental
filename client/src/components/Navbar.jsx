@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom';
+import { useAuth } from './context/auth';
 
 const Navbar = () => {
+  const { isLoggedIn, LogoutUser } = useAuth(); // Access the isLoggedIn state from the context
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -14,11 +16,28 @@ const Navbar = () => {
       <ul className="hidden md:flex gap-8 lg:gap-12 font-[Rufina] text-lg tracking-wide">
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/villas" className="text-white hover:text-gray-300 nav_links">VILLAS</Link></li>
         <li className="hover:text-gray-200 cursor-pointer "> <Link to="/aboutus"className='text-white hover:text-gray-300 nav_links'>About Us</Link></li>
-        <li className="hover:text-gray-200 cursor-pointer "> <Link to="/logout"className='text-white hover:text-gray-300 nav_links'>Logout</Link></li>
         <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/footer" className='nav_links'>Contact Us</Link></li>
+        
         <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/userBookedVillaForm" className='nav_links'>Book villa</Link></li>
       </ul>
+      {isLoggedIn ? (
 
+<li className="hover:text-gray-200 cursor-pointer nav_links  "> <button
+onClick={() => {
+  LogoutUser();
+  setMenuOpen(false);
+  // optionally navigate somewhere
+}}
+className="text-white hover:text-gray-300 "
+>
+Logout
+</button></li>
+) : (
+<>
+<li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/login" className='nav_links'>Login</Link></li>
+<li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/signup" className='nav_links'>Signup</Link></li>
+</>
+)}
       {/* Mobile Menu Button */}
       <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden z-50">
         {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}

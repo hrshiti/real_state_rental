@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 const VillaManagementPage = () => {
   const navigate = useNavigate();
   const [clients, setClients] = useState([]);
+
   const handleUpdate = (villa) => {
-    navigate(`/villaBookingForm/${villa._id}`); // redirect with ID
+    navigate(`/villaBookingForm/${villa._id}`);
   };
-  // Fetch client data on mount
+
   useEffect(() => {
     fetch("https://real-state-backend-uvau.onrender.com/clientdata")
       .then(res => res.json())
@@ -19,7 +20,6 @@ const VillaManagementPage = () => {
       .catch(err => console.log(err));
   }, []);
 
-  // 🗑️ DELETE Villa Function
   const handleDelete = async (villa) => {
     try {
       const confirmDelete = window.confirm(`Are you sure you want to delete ${villa.villaName}?`);
@@ -33,7 +33,6 @@ const VillaManagementPage = () => {
       console.log(result);
 
       if (response.ok) {
-        // Remove villa from UI
         setClients(prev => prev.filter(c => c._id !== villa._id));
         alert("Villa deleted successfully");
       } else {
@@ -45,14 +44,11 @@ const VillaManagementPage = () => {
     }
   };
 
-  // ✏️ Update handler (you can add edit form later)
-  
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-blue-900 w-screen to-black text-white px-4 sm:px-8 pt-10">
-      <h1 className="text-3xl font-semibold mb-6">Villa Management</h1>
+    <div className="min-h-screen w-full px-4 sm:px-6 lg:px-10 pt-10 bg-gradient-to-b from-black via-blue-900 to-black text-white">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center sm:text-left">Villa Management</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-6xl text-black gap-4 ml-34">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {clients.map((client, index) => (
           <VillasCard
             key={index}
@@ -67,7 +63,7 @@ const VillaManagementPage = () => {
             icon_span2={client.bedroom}
             icon2_span2={client.bathroom}
             onUpdate={() => handleUpdate(client)}
-            onDelete={() => handleDelete(client)} // ✅ hook it here
+            onDelete={() => handleDelete(client)}
             showActions={true}
           />
         ))}

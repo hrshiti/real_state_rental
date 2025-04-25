@@ -22,7 +22,7 @@ const userBookedVillaSchema = new mongoose.Schema({
         required:true
     },
     guestsNumb:{
-        type:Number,
+        type:String,
         required:true
     },
     villaType:{
