@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -112,6 +113,7 @@ fetchFilterData()
 
   {/* Button Section */}
   <div className="w-full sm:w-auto flex justify-center mt-4 md:mt-0">
+    <NavLink to="/villas">  
     <button 
       onClick={clickhandle} 
       className="w-full sm:w-44 h-12 border-r-2 border-gray-500 text-xl 
@@ -119,6 +121,7 @@ fetchFilterData()
     >
       Search <FontAwesomeIcon icon={faMagnifyingGlass} />
     </button>
+    </NavLink>
   </div>
 
 </div>

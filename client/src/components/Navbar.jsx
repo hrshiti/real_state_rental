@@ -19,7 +19,7 @@ const Navbar = () => {
         <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/footer" className='nav_links'>Contact Us</Link></li>
         
         <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/userBookedVillaForm" className='nav_links'>Book villa</Link></li>
-      </ul>
+     
       {isLoggedIn ? (
 
 <li className="hover:text-gray-200 cursor-pointer nav_links  "> <button
@@ -38,6 +38,7 @@ Logout
 <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/signup" className='nav_links'>Signup</Link></li>
 </>
 )}
+</ul>
       {/* Mobile Menu Button */}
       <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden z-50">
         {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
@@ -55,6 +56,24 @@ Logout
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/aboutus">About Us</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/footer">Contact us</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/userBookedVillaForm">Book villa</Link></li>
+          {isLoggedIn ? (
+
+<li className="hover:text-gray-200 cursor-pointer nav_links  "> <button
+onClick={() => {
+  LogoutUser();
+  setMenuOpen(false);
+  // optionally navigate somewhere
+}}
+className="text-white hover:text-gray-300 "
+>
+Logout
+</button></li>
+) : (
+<>
+<li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/login" className='nav_links'>Login</Link></li>
+<li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/signup" className='nav_links'>Signup</Link></li>
+</>
+)}
         </ul>
       </div>
 
