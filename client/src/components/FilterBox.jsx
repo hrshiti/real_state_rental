@@ -79,7 +79,8 @@ fetchFilterData()
   };
 
   return (
-    <div className="w-full max-w-7xl p-4 text-black bg-white rounded-b-xl 
+    <div className="w-full max-w-7xl p-4 text-black bg-white 
+     
     border-b-4 border-[#c9bdab] shadow-[0_20px_0px_0px_#181D24B8] 
     flex flex-col md:flex-row items-center justify-between mt-12 ml-16">
   

@@ -29,10 +29,11 @@ import Table from './components/Table.jsx'
 import ForgetPassword from './components/ForgetPassword.jsx'
 import ResetPassword from './components/ResetPassword.jsx'
 import { DashboardOverviewProvider } from './components/context/dashboardOverview.jsx'
-import VillaBookingForm from './components/VillaBookingForm.jsx'
+
 import UserBookedVillaForm from './components/UserBookedVillaForm.jsx'
 import { VillaBookedProvider } from './components/context/villaBooked.jsx'
 import VillaManagementPage from './dashboard/VillaManagementPage.jsx'
+import VillaBookingForm from './components/VillaBookingForm.jsx'
 
 
 
@@ -148,7 +149,7 @@ const router = createBrowserRouter([
 
   },
   {
-    path: "/villaBookingForm/:id",
+    path: "/villaBookingForm/",
     element: <VillaBookingForm />
 
   },

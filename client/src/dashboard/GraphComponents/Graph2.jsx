@@ -48,13 +48,13 @@ const data = [
 
 const Graph2 = () => {
   return (
-    <div className="w-full max-w-full h-[20rem] sm:h-[24rem] lg:h-[28rem] bg-gradient-to-br from-black via-blue-900 to-black text-white p-4 sm:p-6 rounded-xl shadow-lg">
+    <div className="w-screen max-w-full h-[20rem] sm:h-[24rem] lg:h-[28rem] bg-gradient-to-br from-black via-blue-900 to-black text-white p-4 sm:p-6 rounded-xl shadow-lg">
       <div className="text-center mb-4">
         <h3 className="text-lg sm:text-xl font-bold">Monthly Revenue</h3>
         <p className="text-sm text-green-500">(+3%) compared to last month</p>
       </div>
 
-      <div className="w-full h-full">
+      <div className="w-full h-full md:w-10 md:h-4 sm:w-10 sm:h-4">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" />

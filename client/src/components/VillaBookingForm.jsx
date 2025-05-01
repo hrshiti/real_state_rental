@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-export default function VillaBookingForm() {
-  const { id } = useParams(); // will be undefined if you're adding a villa
-const navigate = useNavigate();
+
+const VillaBookingForm =()=> {
   const [formData, setFormData] = useState({
     villaName: "",
     location: "",
@@ -18,28 +15,6 @@ const navigate = useNavigate();
     photo: [],
     status: "Available",
   });
-useEffect(() => {
-  if (id) {
-    fetch(`https://real-state-backend-uvau.onrender.com/client/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFormData({
-          villaName: data.villaName,
-          location: data.location,
-          description: data.description,
-          pricePerNight: data.pricePerNight,
-          numberOfRooms: data.numberOfRooms,
-          availableFrom: data.availableFrom?.slice(0, 10),
-          availableTo: data.availableTo?.slice(0, 10),
-          checkInTime: data.checkInTime,
-          checkOutTime: data.checkOutTime,
-          amenities: data.amenities || [],
-          photo: [], // we don't pre-fill file input
-          status: data.status,
-        });
-      });
-  }
-}, [id]);
 
   const handleChange = (e) => {
     const { name, value, type, files, checked } = e.target;
@@ -77,7 +52,7 @@ useEffect(() => {
     data.append("status", formData.status);
 
     formData.amenities.forEach((amenity, index) => {
-      data.append(`amenities[]`, amenity);
+      data.append("amenities[]", amenity);
     });
 
     if (formData.photo.length > 0) {
@@ -86,13 +61,14 @@ useEffect(() => {
       });
     }    
     try {
-     const res = await fetch(`https://real-state-backend-uvau.onrender.com/client${id ? `/${id}` : ""}`, {
-  method: id ? "PATCH" : "POST",
-  body: data,
-});
+      const res = await fetch("http://localhost:5000/client", {
+        method: "POST",
+        body: data,
+        // Don't set Content-Type manually
+      });
+
       if (res.ok) {
-        console.log(id ? "Villa updated successfully!" : "Villa added successfully!");
-        navigate("/dashboard/villas");
+        console.log("Villa added successfully!");
       } else {
         console.error("Error submitting form");
       }
@@ -236,3 +212,4 @@ useEffect(() => {
     </div>
   );
 }
+export default VillaBookingForm;

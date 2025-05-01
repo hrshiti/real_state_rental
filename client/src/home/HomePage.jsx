@@ -8,11 +8,11 @@ import FilterBox from '../components/FilterBox'
 const HomePage = () => {
   return (
     <>
- <div className="w-screen overflow-x-hidden min-h-screen md:h-[924px] rounded-br-[150px] bg-[url('/home_bg.png')] bg-cover bg-center">
+ <div className="w-screen overflow-x-hidden min-h-screen md:h-[924px]  bg-[url('/home_bg.png')] bg-cover bg-center">
       <Navbar />
 
       {/* Hero Content */}
-      <div className="w-full h-auto md:h-[836px] flex flex-col justify-center items-center text-center px-6">
+      <div className="w-full h-auto md:h-[836px] flex flex-col justify-center items-center   text-center px-6">
         
         {/* Title & Subtitle */}
         <div className="w-full max-w-[650px]">
