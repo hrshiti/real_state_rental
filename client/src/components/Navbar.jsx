@@ -36,6 +36,7 @@ Logout
 <>
 <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/login" className='nav_links'>Login</Link></li>
 <li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/signup" className='nav_links'>Signup</Link></li>
+<li className="hover:text-gray-200 cursor-pointer nav_links"> <Link to="/dashboard" className='nav_links'>dashboard</Link></li>
 </>
 )}
 </ul>
@@ -56,6 +57,7 @@ Logout
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/aboutus">About Us</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/footer">Contact us</Link></li>
           <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/userBookedVillaForm">Book villa</Link></li>
+          <li className="hover:text-gray-300 cursor-pointer" onClick={() => setMenuOpen(false)}><Link to="/dashboard">Dashboard</Link></li>
           {isLoggedIn ? (
 
 <li className="hover:text-gray-200 cursor-pointer nav_links  "> <button
