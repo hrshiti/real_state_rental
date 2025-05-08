@@ -2,16 +2,42 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import { faSave, faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VillaDetails from "./components/VillaDetails";
 import Footer from "./home/Footer";
 import Calendar from "react-calendar";
 import ContactInfo from "./components/ContactInfo";
+import { useEffect,useState  } from "react";
+import { useParams } from "react-router-dom";
+
 
 
 const Villa = () => {
+
+  const { id } = useParams();
+  const [clients, setClients] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
    
-
-
+    if (id) {
+      fetch(`http://localhost:5000/clientdata/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Fetched Data:", data);
+          setClients(data.msg);
+          console.log("Client Data:", clients);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [id]);
+  if (loading) return <p>Loading villa data...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!clients) return <p>No villa data found.</p>;
   return (
     <>
       <div className="relative min-h-screen w-full">
@@ -40,8 +66,8 @@ const Villa = () => {
             {/* Left Side - Single Large Image */}
             <div className="w-full h-[300px] md:h-[500px] lg:h-[574px]">
               <img
-                src="/villa01.png"
-                alt="Villa Image"
+                src={`http://localhost:5000/clientdata/${clients.photo[0]}`}
+                 alt={clients.title}
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
@@ -73,7 +99,68 @@ const Villa = () => {
         </div>
 
         {/* Villa Details Section */}
-        <VillaDetails />
+         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-center gap-8 p-4">
+            
+              {/* Left Section */}
+              <div className="w-full lg:max-w-3xl text-black p-4">
+                
+                {/* Title Section */}
+                
+                
+                <div key={clients._id} className="mt-6 md:mt-12">
+                  <h2 className="text-2xl md:text-3xl font-medium">Dalmatia</h2>
+                  <p className="text-lg md:text-xl font-medium font-[Raleway] text-black">
+                    {clients.location} / {clients.
+numberOfRooms} bedrooms / {clients.bathroom}bathrooms / 280m²
+                  </p>
+                </div>
+           
+        
+                {/* Check-in / Check-out Section */}
+                <div className="mt-6 md:mt-8">
+                  <div className="flex justify-between text-lg md:text-2xl">
+                    <span>Check in</span> <span>Check out</span>
+                  </div>
+                  <div className="flex justify-between text-sm md:text-lg">
+                    <span>untill 8:00</span> <span>until 11:00</span>
+                  </div>
+                </div>
+                {/* Amenities Section */}
+                <div className="mt-6 md:mt-12">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4">Amenities</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    
+                    {/* Column 1 */}
+                    <div>
+                      <p>✔️ Swimming pool</p>
+                      <p>✔️ Indoor pool</p>
+                      <p>✔️ Free WiFi</p>
+                    </div>
+        
+                    {/* Column 2 */}
+                    <div>
+                      <p>✔️ Air conditioning</p>
+                      <p>✔️ Private parking</p>
+                      <p>✔️ Pet friendly</p>
+                    </div>
+        
+                    {/* Column 3 */}
+                    <div>
+                      <p>✔️ Garden view</p>
+                      <p>✔️ Fully equipped kitchen</p>
+                      <p>✔️ Balcony</p>
+                    </div>
+        
+                  </div>
+                </div>
+              </div>
+        
+              {/* Right Section */}
+              <div className="w-full lg:w-auto mt-6 md:mt-12 lg:mt-0 p-4">
+                <ContactInfo />
+              </div>
+         
+            </div>
 
         {/* Location Section */}
         <div className="mt-20 lg:ml-52 px-4">
@@ -90,9 +177,9 @@ const Villa = () => {
         {/* Availability & Contact Section */}
         <div className="w-full bg-[#f5f3f1] flex flex-col md:flex-row justify-center items-center gap-12 mt-14 mb-14 p-6">
           {/* Availability Calendar */}
-          <div className="w-full max-w-lg">
-            <h2 className="text-xl md:text-2xl font-medium mb-4">Availability</h2>
-            <Calendar className="w-full shadow-lg p-2 rounded-lg" />
+          <div className="w-full mr-12 max-w-lg">
+            <h2 className="text-xl md:text-2xl font-medium text-black mb-4">Availability</h2>
+            <Calendar className="w-full shadow-lg text-black p-2 rounded-lg" />
           </div>
 
           {/* Contact Info */}

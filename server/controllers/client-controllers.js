@@ -85,6 +85,19 @@ const clientDataUpdateApi = async (req, res) => {
     res.status(500).json({ msg: "Server Error" });
   }
 }
+const getClientById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await client.findById(id);
+    if (!response) {
+      return res.status(404).json({ msg: "Villa not found" });
+    }
+    res.status(200).json({ msg: response });
+  } catch (error) {
+    console.log(`Service error: ${error}`);
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
 
 // Multer config
 const storage = multer.diskStorage({
@@ -97,4 +110,4 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-module.exports = { clientApi, clientdata, upload, clientDataDeleteApi, clientDataUpdateApi };
+module.exports = { clientApi, clientdata, upload, clientDataDeleteApi, getClientById, clientDataUpdateApi };

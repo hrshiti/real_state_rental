@@ -10,9 +10,11 @@ const AllVillas = () => {
   const [clients, setClients] = useState([]);
   const navigate = useNavigate();
 
-  const clickHandle = () => {
-    navigate('/villa');
+  const clickHandle = (id) => {
+    navigate(`/villa/${id}`);
   };
+  
+  
 
   useEffect(() => {
     fetch('https://real-state-backend-uvau.onrender.com/clientdata')
@@ -31,7 +33,7 @@ const AllVillas = () => {
         <div className="absolute inset-0 bg-[url('/allVillaBg.png')] bg-cover bg-center filter blur-[120px] sm:blur-[200px] lg:blur-[250px] z-[-1]"></div>
 
         {/* Content Layer */}
-        <div className="relative z-10">
+        <div className="relative z-10"> 
           <Navbar />
 
           {/* Main Container */}
@@ -49,10 +51,10 @@ const AllVillas = () => {
 
             {/* Villas Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-0">
-              {clients.map((client, index) => (
+              {clients.map((client) => (
                 <VillasCard
-                  onClick={clickHandle}
-                  key={index}
+                onClick={() => clickHandle(client._id)}
+                  key={client._id}
                   img_src={`https://real-state-backend-uvau.onrender.com${client.photo}`}
                   alt_text={client.villaName}
                   span1={client.checkin}
