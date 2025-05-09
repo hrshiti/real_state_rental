@@ -20,7 +20,7 @@ const Villa = () => {
   useEffect(() => {
    
     if (id) {
-      fetch(`http://localhost:5000/clientdata/${id}`)
+      fetch(`https://real-state-backend-uvau.onrender.com/clientdata/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log("Fetched Data:", data);
