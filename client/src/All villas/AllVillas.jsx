@@ -33,7 +33,7 @@ const AllVillas = () => {
         <div className="absolute inset-0 bg-[url('/allVillaBg.png')] bg-cover bg-center filter blur-[120px] sm:blur-[200px] lg:blur-[250px] z-[-1]"></div>
 
         {/* Content Layer */}
-        <div className="relative z-10"> 
+        <div className="relative z-10 "> 
           <Navbar />
 
           {/* Main Container */}
@@ -45,12 +45,12 @@ const AllVillas = () => {
             </div>
 
             {/* Filter Centered */}
-            <div className="flex justify-center mb-12">
+            <div className="mr-6 mb-12 ">
               <FilterBox />
             </div>
 
             {/* Villas Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-black gap-8 px-4 sm:px-0 mb-12">
               {clients.map((client) => (
                 <VillasCard
                 onClick={() => clickHandle(client._id)}
@@ -58,12 +58,16 @@ const AllVillas = () => {
                   img_src={`https://real-state-backend-uvau.onrender.com${client.photo}`}
                   alt_text={client.villaName}
                   span1={client.checkin}
-                  span2="Mountains"
+                  span2={client.location}
                   heading={client.villaName}
                   icon_span={`45 guests`}
                   icon2_span="460m2"
-                  icon_span2={client.bedroom}
-                  icon2_span2={client.bathroom}
+                  icon_span2={client.
+                    numberOfRooms
+                    }
+                  icon2_span2={client.
+                    numberOfRooms
+                    }
                 />
               ))}
             </div>

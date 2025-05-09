@@ -22,16 +22,21 @@ const GraphsPage = () => {
          <div className="flex flex-col lg:flex-row w-full h-auto bg-transparent">
             {/* Left Section */}
             <div className="lg:w-1/3 p-4">
-               <div className="w-full h-96 relative mt-[-50px]">
-                  <div className="absolute top-20 left-8">
+               <div className="w-full h-46 relative mt-[-50px]">
+                  <div className="absolute lg:top-30 z-20 left-8">
                      <p className="opacity-45">Welcome Back</p>
                      <h3 className="font-bold text-2xl pt-4 pb-6">Rohit Sharma</h3>
                      <p className="opacity-45">Glad to see you again</p>
                      <p className="opacity-45">Ask me anything</p>
                      <p>Tap to record <FontAwesomeIcon icon={faArrowRight} /></p>
                   </div>
-                  <div>
-                     <img src="/braden.png" alt="braden_img" className="absolute w-full object-cover" />
+                  <div className='lg:mt-12'>
+                     <img src="/braden.png" alt="braden_img" className="absolute w-full
+                    h-50 
+                    lg:h-106
+
+                     sm:h-50
+                     object-cover" />
                   </div>
                </div>
             </div>
@@ -41,9 +46,9 @@ const GraphsPage = () => {
                <div className="w-full lg:w-1/2 bg-gradient-to-br from-black via-blue-900 to-black text-white p-4 rounded-md">
                   <h3 className="text-bold mt-4 ml-6">Satisfaction Rate</h3>
                   <p className="opacity-45 ml-6">From all people</p>
-                  <img src="/Ellipse.png" alt="graph_img" className="w-56 mt-6 ml-8 h-56" />
-                  <div className="bg-gray-850 relative top-[-130px] left-[-10px] w-76 h-18 justify-center z-10 bg-gray-1000 items-center flex flex-row gap-14 opacity-80">
-                     <p className="opacity-45">0%</p>
+                  <img src="/Ellipse.png" alt="graph_img" className="w-56 mt-6  h-56" />
+                  <div className="bg-gray-850 relative top-[-130px] left-[-40px] w-76 h-18 justify-center z-10 bg-gray-1000 items-center flex flex-row gap-14 opacity-80">
+                     <p className="opacity-45 ">0%</p>
                      <p className="text-bold text-2xl">75%</p>
                      <p className="opacity-45">100%</p>
                   </div>

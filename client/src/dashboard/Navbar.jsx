@@ -11,8 +11,8 @@ const Navbar = () => {
       </div>
 
       <div className='flex flex-row justify-center items-center pt-6 gap-4'>
-        <FontAwesomeIcon icon={faSearch} className='text-xl pt-4 mr-4 mb-4' />
-        <input placeholder='Type here...' type="search" name="search" className='border-2 p-2 rounded-md' />
+        <FontAwesomeIcon icon={faSearch} className='text-xl pt-4  mr-4 mb-4' />
+        <input placeholder='Type here...' type="search" name="search" className='border-2 p-2 w-32 rounded-md' />
         <p className='hidden sm:block'>Sign In</p>
         <div className='flex gap-4'>
           <FontAwesomeIcon icon={faHome} className='text-xl' />

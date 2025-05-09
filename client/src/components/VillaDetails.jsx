@@ -68,16 +68,20 @@ const VillaDetails = () => {
               <p>✔️ Fully equipped kitchen</p>
               <p>✔️ Balcony</p>
             </div>
-
+         
           </div>
         </div>
       </div>
+        <div className="">
+  <button className="btn3">Book Villa</button>
+ </div>
 
       {/* Right Section */}
       <div className="w-full lg:w-auto mt-6 md:mt-12 lg:mt-0 p-4">
         <ContactInfo />
       </div>
  
+    
     </div>
   );
 };
