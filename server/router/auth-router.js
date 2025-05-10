@@ -6,6 +6,7 @@ const {clientApi,clientdata, upload, clientDataDeleteApi, getClientById, clientD
 const { filterApi, filterGetApi } = require("../controllers/filter-controllers")
 const {dashboardOverviewApi,dashboardOverviewGetApi,villaManagementApi,villaManagementGetApi, bookingManagementApi,userManagementApi,financialReportApi,financialReportGetApi, bookingManagementGetApi, userManagementGetApi} = require("../controllers/dashboard-controllers")
 const { userBookedVillaApi,userBookedVillaGetApi,getBookingsPerMonth } = require("../controllers/userBookedVilla-controller")
+const { orderData } = require("../controllers/orderData-controllers")
 
 
 
@@ -46,7 +47,9 @@ router.post("/userBookedVillaApi", userBookedVillaApi)
 router.get("/getBookingsPerMonth", getBookingsPerMonth)
 router.get("/userBookedVillaGetApi", userBookedVillaGetApi)
 
+//order api payment
 
+router.post("/orderData", orderData)
 
 
 module.exports = router

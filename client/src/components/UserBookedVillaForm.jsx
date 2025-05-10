@@ -53,7 +53,7 @@ const UserBookedVillaForm = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-2xl lg:ml-110 mx-auto mt-10 px-4 sm:px-6 lg:px-8 ">
       <div className="p-6 bg-white text-black rounded-2xl shadow-lg">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Book Your Villa</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

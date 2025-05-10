@@ -6,7 +6,7 @@ import Footer from "./home/Footer";
 import Calendar from "react-calendar";
 import ContactInfo from "./components/ContactInfo";
 import { useEffect,useState  } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
@@ -154,6 +154,7 @@ numberOfRooms} bedrooms / {clients.bathroom}bathrooms / 280m²
                     </div>
         
                   </div>
+                  <button className="btn3 mt-16 font-extrabold hover:bg-green-500  w-124 ml-14 text-black"><Link to="/userBookedVillaForm">Book villa</Link></button>
                 </div>
               </div>
         

@@ -34,6 +34,7 @@ import UserBookedVillaForm from './components/UserBookedVillaForm.jsx'
 import { VillaBookedProvider } from './components/context/villaBooked.jsx'
 import VillaManagementPage from './dashboard/VillaManagementPage.jsx'
 import VillaBookingForm from './components/VillaBookingForm.jsx'
+import Payment from './components/Payment.jsx'
 
 
 
@@ -166,6 +167,11 @@ const router = createBrowserRouter([
   {
     path: "/villamanagementpage",
     element: <VillaManagementPage />
+
+  },
+  {
+    path: "/payment",
+    element: <Payment />
 
   },
 ]);

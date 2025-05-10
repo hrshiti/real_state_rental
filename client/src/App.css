@@ -23,7 +23,12 @@
 background-color: yellow;
 }
 .btn3{
-background-color: red;
-color:black;
+background-color: white;
+color:black !important;
+}
 
+
+
+.btn3:hover{
+    background-color: rgb(63, 60, 60);
 }
