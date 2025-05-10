@@ -66,8 +66,10 @@ const Villa = () => {
             {/* Left Side - Single Large Image */}
             <div className="w-full h-[300px] md:h-[500px] lg:h-[574px]">
               <img
-                src={`http://localhost:5000/clientdata/${clients.photo[0]}`}
-                 alt={clients.title}
+                src={`https://real-state-backend-uvau.onrender.com${clients.
+                  photo[0]}`}
+                 alt={clients.amenities[0]
+                 }
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
