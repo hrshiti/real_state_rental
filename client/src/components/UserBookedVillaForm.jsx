@@ -1,7 +1,9 @@
 // src/components/UserBookedVillaForm.jsx
 import React, { useState } from 'react';
+import {  useNavigate } from "react-router-dom"; // Adjust the import based on your project structure
 
 const UserBookedVillaForm = () => {
+  const navigation = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,6 +14,10 @@ const UserBookedVillaForm = () => {
     villaType: '',
     guestsNumb: '',
   });
+  
+   
+   
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +56,7 @@ const UserBookedVillaForm = () => {
       console.error('Error during booking:', error);
       alert('An error occurred. Please try again later.');
     }
+     navigation('/payment');
   };
 
   return (
@@ -138,7 +145,8 @@ const UserBookedVillaForm = () => {
             className="w-full border p-3 rounded-xl h-24 resize-none"
           ></textarea>
 
-          <button
+          <button 
+          
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition"
           >
