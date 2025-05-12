@@ -2,7 +2,7 @@ import React from 'react'
 
 const OurRegions = () => {
   return (
-    <div className="w-screen h-auto bg-[#C9BDAB] flex flex-col justify-center items-center py-12">
+    <div className="w-screen h-auto bg-[#C9BDAB] flex flex-col justify-center items-center pb-24 py-12">
       <div className="flex flex-col gap-12 w-full max-w-[1536px] text-center px-4">
         
         {/* Heading Section */}
