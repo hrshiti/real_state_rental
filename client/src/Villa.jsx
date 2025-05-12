@@ -35,6 +35,10 @@ const Villa = () => {
 
   return (
     <div className="min-h-screen w-full">
+      <div className="absolute inset-0 bg-[url('/allVillaBg.png')] bg-cover bg-center filter blur-[100px] md:blur-[180px] lg:blur-[250px] z-[-1]"></div>
+        
+
+      
       <Navbar />
 
       <div className="max-w-6xl mx-auto p-4">
@@ -87,7 +91,7 @@ const Villa = () => {
         </div>
 
         <div className="mt-8">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-full md:w-auto">
+          <button className="bg-blue-500 text-white px-4 py-2 btn3 rounded-md w-full md:w-auto">
             <Link to="/userBookedVillaForm">Book Villa</Link>
           </button>
         </div>
@@ -102,7 +106,7 @@ const Villa = () => {
         ></iframe>
       </div>
 
-      <div className="bg-gray-100 mt-12 p-4 flex flex-col md:flex-row gap-6">
+      <div className="bg-gray-100 mt-12 p-4 text-black flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-1/2">
           <h2 className="text-lg font-medium mb-4">Availability</h2>
           <Calendar className="w-full" />

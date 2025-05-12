@@ -43,10 +43,10 @@ fetchFilterData()
     const toggleDropdown = () => setOpen((prev) => !prev);
 
     return (
-      <div className="relative w-full md:w-auto">
+      <div className="relative w-full sm:w-56   md:w-auto">
         <button
           onClick={toggleDropdown}
-          className="w-full md:w-56 h-18 border-r-2 border-gray-500 pt-5 text-2xl flex justify-between items-center"
+          className="w-full md:w-56  h-18 border-r-2 border-gray-500 pt-5 text-2xl flex justify-between items-center"
         >
           {selectedValue} <FontAwesomeIcon icon={faCaretDown} className="pr-2" />
         </button>
@@ -82,7 +82,7 @@ fetchFilterData()
     <div className="w-full max-w-7xl p-4 text-black bg-white 
      
     border-b-4 border-[#c9bdab] shadow-[0_20px_0px_0px_#181D24B8] 
-    flex flex-col md:flex-row items-center justify-between mt-12 ml-16">
+    flex flex-col md:flex-row items-center justify-between mt-12 ml-16 mr-12 mb-12">
   
   {/* Dropdown Section */}
   <div className="flex flex-wrap gap-4 w-full md:w-auto justify-center md:justify-start">

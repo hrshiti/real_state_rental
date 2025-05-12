@@ -45,7 +45,7 @@ const AllVillas = () => {
             </div>
 
             {/* Filter Centered */}
-            <div className="mr-6 mb-12 ">
+            <div className=" mb-12  ">
               <FilterBox />
             </div>
 

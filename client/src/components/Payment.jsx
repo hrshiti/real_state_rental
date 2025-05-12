@@ -19,7 +19,7 @@ const proceedPayment = async()=>{
  
 
     try {
-        const data = await axios.post("http://localhost:5000/orderData",{amount: 500})
+        const data = await axios.post("https://real-state-backend-uvau.onrender.com/orderData",{amount: 500})
         const options = {
             key: "rzp_test_6XWGM1pDrVgeaT",
             amount: data.data.order.amount,
